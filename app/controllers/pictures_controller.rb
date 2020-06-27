@@ -1,18 +1,13 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
-  # GET /pictures
-  # GET /pictures.json
   def index
     @pictures = Picture.all
   end
 
-  # GET /pictures/1
-  # GET /pictures/1.json
   def show
   end
 
-  # GET /pictures/new
   def new
     if params[:back]
       @picture = Picture.new(picture_params)
@@ -21,12 +16,9 @@ class PicturesController < ApplicationController
     end
   end
 
-  # GET /pictures/1/edit
   def edit
   end
 
-  # POST /pictures
-  # POST /pictures.json
   def create
     @picture = current_user.pictures.build(picture_params)
     respond_to do |format|
@@ -54,8 +46,6 @@ class PicturesController < ApplicationController
     end
   end
 
-  # DELETE /pictures/1
-  # DELETE /pictures/1.json
   def destroy
     @picture.destroy
     respond_to do |format|
