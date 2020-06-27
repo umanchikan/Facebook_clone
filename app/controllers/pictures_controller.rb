@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :user_login_check, only: [:new]
 
   def index
     @pictures = Picture.all
@@ -63,4 +64,10 @@ class PicturesController < ApplicationController
     def picture_params
       params.require(:picture).permit(:content, :image, :image_cache)
     end
+
+  def user_login_check
+    unless logged_in?
+      redirect_to root_path
+    end
+  end
 end
